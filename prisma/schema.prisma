@@ -1,8 +1,49 @@
-// generator client {
-//   provider = "prisma-client-js"
-// }
+generator client {
+  provider = "prisma-client-js"
+}
 
-// datasource db {
-//   provider = "postgresql"
-//   url      = env("DATABASE_URL")
-// }
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
+model User {
+  id             Int       @id @default(autoincrement())
+  name           String?
+  email          String?   @unique
+  password       String?   // Optional if using Google login
+  role           String?
+  bio            String?
+  experienceYears Int
+  projectsCount  Int
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+}
+
+model SkillCategory {
+  id    Int     @id @default(autoincrement())
+  name  String  // e.g., "Frontend Development", "UI/UX Design"
+  description String
+  proficiency Int     // Percentage like 95
+  skills Skill[]
+}
+
+model Skill {
+  id              Int    @id @default(autoincrement())
+  name            String
+  skillCategoryId Int
+  skillCategory   SkillCategory @relation(fields: [skillCategoryId], references: [id])
+}
+
+model Project {
+  id          Int      @id @default(autoincrement())
+  title       String   // e.g., "Storybook Portfolio"
+  subtitle    String   // e.g., "A Tale of a Developer"
+  description String   // Project overview
+  techStack   String[] // ["Next.js", "TypeScript", ...]
+  liveUrl     String?
+  codeUrl     String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}

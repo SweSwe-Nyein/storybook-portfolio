@@ -1,4 +1,3 @@
-"use client"
 
 import type React from "react"
 
@@ -8,6 +7,8 @@ import { BarChart3, Users, FileText, Settings, LogOut, Menu, X, Home, Bell, Sear
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { ThemeToggle } from "@/components/theme-toggle"
+import { signOut } from "@/auth"
+import { signOutAction } from "@/lib/actions/authActions"
 
 interface DashboardLayoutProps {
   children: React.ReactNode
@@ -125,14 +126,15 @@ export function DashboardLayout({ children, activeTab, onTabChange }: DashboardL
 
           {/* Logout Button */}
           <div className="mt-6 pt-6 border-t border-red-100 dark:border-red-800">
-            <Button
-              onClick={() => {}}
-              variant="outline"
-              className="w-full border-red-200 dark:border-red-700 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/20 artistic-button"
-            >
-              <LogOut className="w-4 h-4 mr-2" />
-              <span className="handwritten">Sign Out</span>
-            </Button>
+            <form action={signOutAction}>
+              <Button
+                variant="outline"
+                className="w-full border-red-200 dark:border-red-700 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/20 artistic-button"
+              >
+                <LogOut className="w-4 h-4 mr-2" />
+                <span className="handwritten">Sign Out</span>
+              </Button>
+            </form>
           </div>
         </div>
       </motion.aside>
