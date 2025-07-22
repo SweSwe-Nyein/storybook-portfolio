@@ -12,6 +12,7 @@
     "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
   },
   "dependencies": {
+    "@auth/core": "^0.40.0",
     "@auth/prisma-adapter": "^2.10.0",
     "@emotion/is-prop-valid": "latest",
     "@hookform/resolvers": "^3.9.1",
@@ -56,7 +57,7 @@
     "input-otp": "1.4.1",
     "lucide-react": "^0.454.0",
     "next": "15.2.0-canary.65",
-    "next-auth": "5.0.0-beta.25",
+    "next-auth": "5.0.0-beta.29",
     "next-themes": "latest",
     "postgres": "^3.4.7",
     "react": "^18",
@@ -72,6 +73,7 @@
     "zod": "^3.25.76"
   },
   "devDependencies": {
+    "@prisma/cli": "^2.20.1",
     "@types/bcrypt": "^5.0.2",
     "@types/node": "^22.16.4",
     "@types/react": "^18",

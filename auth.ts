@@ -1,12 +1,14 @@
 import NextAuth from "next-auth";
 import { authConfig } from "./auth.config";
 import Credentials from "next-auth/providers/credentials";
-import GoogleProvider from "next-auth/providers/google";
 import { z } from 'zod';
 import type { User } from '@/types/user';
 import bcrypt from 'bcryptjs';
 import postgres from 'postgres';
-
+import Google from "next-auth/providers/google";
+import GitHub from "next-auth/providers/github"
+import { PrismaAdapter } from "@next-auth/prisma-adapter";
+import prisma from "./lib/prisma";
 const sql = postgres(process.env.POSTGRES_URL!, { ssl: 'require' });
 
 async function getUser(email: string): Promise<User | undefined> {
@@ -19,18 +21,24 @@ async function getUser(email: string): Promise<User | undefined> {
   }
 }
 
-export const { auth, signIn, signOut } = NextAuth({
+export const { handlers, auth, signIn, signOut } = NextAuth({
   ...authConfig,
   pages: {
     signIn: "/login",
     error: "/error",
   },
+  adapter: PrismaAdapter(prisma),
+  session: {strategy: 'jwt'},
   providers: [
-    GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    Google,
+    GitHub({
+      allowDangerousEmailAccountLinking: true
     }),
     Credentials({
+      credentials: {
+        email: {},
+        password: {},
+      },
       async authorize(credentials) {
         const parsedCredentials = z
           .object({
@@ -42,24 +50,22 @@ export const { auth, signIn, signOut } = NextAuth({
             const { email, password } = parsedCredentials.data;
             const user = await getUser(email);
             if (!user) return null;
-            // const passwordsMatch = await bcrypt.compare(password, user.password);
-            const passwordsMatch = password == user.password
+            const passwordsMatch = await bcrypt.compare(password, user.password);
+            // const passwordsMatch = password == user.password
             if (passwordsMatch) return user;
           }
           return null;
       }
     }),
   ],
-  
   callbacks: {
     async signIn({ user, account, profile }) {
-      if(account?.provider === 'google') return true;
-      console.log('signIn', { user, account, profile });
-      // Only allow sign in if user exists in your DB
       if (!user?.email) return false;
-      const dbUser = await getUser(user.email!);
-      if (dbUser) return true;
-      return false; // Block sign in for unknown users
-    },
-  }
+      const dbUser = await getUser(user.email);
+      if (!dbUser) {
+        return false;
+      }
+      return true;
+    }
+  },
 });
