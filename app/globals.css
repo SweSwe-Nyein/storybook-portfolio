@@ -530,3 +530,7 @@ html {
     font-size: 16px;
   }
 }
+
+.space-y-6 > .modal {
+  margin-top: 0 !important;
+}
