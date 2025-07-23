@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { motion } from "framer-motion"
-import { User, Shield, Bell, Palette, Globe, Database, Key } from "lucide-react"
+import { User, Shield, Bell, Palette, Globe } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -24,34 +24,20 @@ const settingsCategories = [
     icon: Shield,
     color: "from-red-500 to-red-600",
   },
-  {
-    id: "notifications",
-    title: "Notifications",
-    description: "Email and push notification preferences",
-    icon: Bell,
-    color: "from-yellow-500 to-yellow-600",
-  },
-  {
-    id: "appearance",
-    title: "Appearance",
-    description: "Theme and display customization",
-    icon: Palette,
-    color: "from-purple-500 to-purple-600",
-  },
+  // {
+  //   id: "notifications",
+  //   title: "Notifications",
+  //   description: "Email and push notification preferences",
+  //   icon: Bell,
+  //   color: "from-yellow-500 to-yellow-600",
+  // },
   {
     id: "site",
     title: "Site Settings",
     description: "General website configuration",
     icon: Globe,
     color: "from-green-500 to-green-600",
-  },
-  {
-    id: "database",
-    title: "Database",
-    description: "Database connection and backup settings",
-    icon: Database,
-    color: "from-indigo-500 to-indigo-600",
-  },
+  }
 ]
 
 export function SettingsManagement() {
@@ -120,18 +106,6 @@ export function SettingsManagement() {
               <label className="block text-red-700 dark:text-red-300 mb-2 handwritten">Confirm New Password</label>
               <Input type="password" className="artistic-input" />
             </div>
-            <div className="flex items-center justify-between p-4 bg-red-50 dark:bg-red-950/20 rounded-lg">
-              <div>
-                <h4 className="font-medium text-red-900 dark:text-red-100 handwritten">Two-Factor Authentication</h4>
-                <p className="text-sm text-red-600 dark:text-red-400 story-text">
-                  Add an extra layer of security to your account
-                </p>
-              </div>
-              <Switch
-                checked={settings.twoFactorAuth}
-                onCheckedChange={(checked) => handleSettingChange("twoFactorAuth", checked)}
-              />
-            </div>
           </div>
         )
 
@@ -175,39 +149,6 @@ export function SettingsManagement() {
           </div>
         )
 
-      case "appearance":
-        return (
-          <div className="space-y-6">
-            <div className="flex items-center justify-between p-4 bg-red-50 dark:bg-red-950/20 rounded-lg">
-              <div>
-                <h4 className="font-medium text-red-900 dark:text-red-100 handwritten">Dark Mode</h4>
-                <p className="text-sm text-red-600 dark:text-red-400 story-text">Use dark theme for the interface</p>
-              </div>
-              <Switch
-                checked={settings.darkMode}
-                onCheckedChange={(checked) => handleSettingChange("darkMode", checked)}
-              />
-            </div>
-            <div>
-              <label className="block text-red-700 dark:text-red-300 mb-2 handwritten">Primary Color</label>
-              <div className="flex space-x-2">
-                <div className="w-8 h-8 bg-red-500 rounded-full cursor-pointer border-2 border-red-700" />
-                <div className="w-8 h-8 bg-blue-500 rounded-full cursor-pointer" />
-                <div className="w-8 h-8 bg-green-500 rounded-full cursor-pointer" />
-                <div className="w-8 h-8 bg-purple-500 rounded-full cursor-pointer" />
-              </div>
-            </div>
-            <div>
-              <label className="block text-red-700 dark:text-red-300 mb-2 handwritten">Font Size</label>
-              <select className="w-full p-2 border border-red-200 dark:border-red-700 rounded-lg bg-white/50 dark:bg-gray-700/50 artistic-input">
-                <option>Small</option>
-                <option>Medium</option>
-                <option>Large</option>
-              </select>
-            </div>
-          </div>
-        )
-
       case "site":
         return (
           <div className="space-y-6">
@@ -222,55 +163,6 @@ export function SettingsManagement() {
                 className="artistic-input"
                 rows={3}
               />
-            </div>
-            <div className="flex items-center justify-between p-4 bg-red-50 dark:bg-red-950/20 rounded-lg">
-              <div>
-                <h4 className="font-medium text-red-900 dark:text-red-100 handwritten">Public Profile</h4>
-                <p className="text-sm text-red-600 dark:text-red-400 story-text">
-                  Make your portfolio publicly accessible
-                </p>
-              </div>
-              <Switch
-                checked={settings.publicProfile}
-                onCheckedChange={(checked) => handleSettingChange("publicProfile", checked)}
-              />
-            </div>
-          </div>
-        )
-
-      case "database":
-        return (
-          <div className="space-y-6">
-            <div>
-              <label className="block text-red-700 dark:text-red-300 mb-2 handwritten">Database URL</label>
-              <Input
-                type="password"
-                defaultValue="postgresql://user:password@localhost:5432/portfolio"
-                className="artistic-input"
-              />
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <Button className="bg-green-600 hover:bg-green-700 text-white artistic-button">
-                <Database className="w-4 h-4 mr-2" />
-                Test Connection
-              </Button>
-              <Button variant="outline" className="artistic-button bg-transparent">
-                <Key className="w-4 h-4 mr-2" />
-                Backup Database
-              </Button>
-            </div>
-            <div className="p-4 bg-yellow-50 dark:bg-yellow-950/20 rounded-lg border border-yellow-200 dark:border-yellow-800">
-              <h4 className="font-medium text-yellow-800 dark:text-yellow-200 handwritten mb-2">Database Statistics</h4>
-              <div className="grid grid-cols-2 gap-4 text-sm">
-                <div>
-                  <span className="text-yellow-700 dark:text-yellow-300 story-text">Total Records:</span>
-                  <span className="font-bold ml-2">1,247</span>
-                </div>
-                <div>
-                  <span className="text-yellow-700 dark:text-yellow-300 story-text">Last Backup:</span>
-                  <span className="font-bold ml-2">2 hours ago</span>
-                </div>
-              </div>
             </div>
           </div>
         )

@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { Suspense, useEffect, useState } from "react"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { AIChatInterface } from "@/components/sections/ai-chat"
 import { FloatingElements } from "@/components/floating-elements"
@@ -53,7 +53,9 @@ export default function ArtisticPortfolio() {
       </div>
 
       {/* Chapter 1: The Beginning */}
-      <Beginning />
+      <Suspense fallback={<div>Loading...</div>}>
+        <Beginning />
+      </Suspense>
 
       {/* Chapter 2: About Me */}
       <AboutMe />

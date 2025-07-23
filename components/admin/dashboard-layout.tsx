@@ -29,7 +29,7 @@ interface DashboardLayoutProps {
 }
 
 const sidebarItems = [
-  { id: "overview", label: "Overview", icon: BarChart3, href: "/dashboard" },
+  // { id: "overview", label: "Overview", icon: BarChart3, href: "/dashboard" },
   { id: "users", label: "Users", icon: Users, href: "/dashboard/users" },
   { id: "skills", label: "Skills", icon: Code, href: "/dashboard/skills" },
   { id: "projects", label: "Projects", icon: FolderOpen, href: "/dashboard/projects" },

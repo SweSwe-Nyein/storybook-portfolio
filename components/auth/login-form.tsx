@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card } from "@/components/ui/card"
 import { useSearchParams } from "next/navigation"
-import { authenticate, login, signInWithGoogle } from "@/lib/actions/authActions"
+import { authenticate, login } from "@/lib/actions/authActions"
 
 interface LoginFormProps {
   onSuccess?: () => void

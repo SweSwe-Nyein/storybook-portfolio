@@ -172,34 +172,6 @@ export function ContentManagement() {
           </div>
         </Card>
       </motion.div>
-
-      {/* Quick Actions */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.6 }}
-      >
-        <Card className="bg-gradient-to-r from-red-500 to-red-600 dark:from-red-600 dark:to-red-700 text-white border-none shadow-xl p-6 artistic-frame">
-          <h3 className="text-xl font-serif mb-4 handwritten">Quick Actions</h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            <button className="bg-white/20 hover:bg-white/30 rounded-xl p-4 text-left transition-colors">
-              <FileText className="w-6 h-6 mb-2" />
-              <p className="font-medium handwritten">New Blog Post</p>
-              <p className="text-sm opacity-90 story-text">Create a new article</p>
-            </button>
-            <button className="bg-white/20 hover:bg-white/30 rounded-xl p-4 text-left transition-colors">
-              <Upload className="w-6 h-6 mb-2" />
-              <p className="font-medium handwritten">Upload Media</p>
-              <p className="text-sm opacity-90 story-text">Add images or videos</p>
-            </button>
-            <button className="bg-white/20 hover:bg-white/30 rounded-xl p-4 text-left transition-colors">
-              <Edit className="w-6 h-6 mb-2" />
-              <p className="font-medium handwritten">Edit Homepage</p>
-              <p className="text-sm opacity-90 story-text">Update main content</p>
-            </button>
-          </div>
-        </Card>
-      </motion.div>
     </div>
   )
 }

@@ -7,18 +7,23 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 model User {
-  id            String          @id @default(cuid())
-  name          String?
-  email          String?   @unique
-  password       String?   // Optional if using Google login
-  role           String?
-  bio            String?
+  id              String          @id @default(cuid())
+  name            String?
+  email           String?   @unique
+  password        String?   // Optional if using Google login
+  role            String?
+  overview        String?
+  bio             String?
   experienceYears Int?
-  projectsCount  Int?
-  emailVerified DateTime?
-  image         String?
-  accounts      Account[]
-  sessions      Session[]
+  projectsCount   Int?
+  emailVerified   DateTime?
+  image           String?
+  address         String?
+  githubUrl       String?
+  linkedInUrl     String?
+  instagramUrl    String?
+  accounts        Account[]
+  sessions        Session[]
   // Optional for WebAuthn support
   Authenticator Authenticator[]
  
@@ -82,11 +87,12 @@ model Authenticator {
 }
 
 model SkillCategory {
-  id    Int     @id @default(autoincrement())
-  name  String  // e.g., "Frontend Development", "UI/UX Design"
-  description String
-  proficiency Int     // Percentage like 95
-  skills Skill[]
+  id            Int     @id @default(autoincrement())
+  name          String  // e.g., "Frontend Development", "UI/UX Design"
+  description   String
+  icon          String?
+  proficiency   Int     // Percentage like 95
+  skills Skill  []
 }
 
 model Skill {
@@ -98,12 +104,14 @@ model Skill {
 
 model Project {
   id          Int      @id @default(autoincrement())
+  tag         String?
   title       String   // e.g., "Storybook Portfolio"
   subtitle    String   // e.g., "A Tale of a Developer"
   description String   // Project overview
   techStack   String[] // ["Next.js", "TypeScript", ...]
   liveUrl     String?
   codeUrl     String?
+  imageUrl    String?
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }

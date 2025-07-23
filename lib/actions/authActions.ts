@@ -14,8 +14,8 @@ const getUserByEmail = async (email: string) => {
   return user;
 }
 export const login = async (provider: string) => {
-  await signIn(provider, { redirectTo: "/" });
-  revalidatePath("/");
+  await signIn(provider, { redirectTo: "/dashboard" });
+  revalidatePath("/dashboard");
 };
 export async function signOutAction() {
   await signOut({ redirectTo: '/' });
@@ -38,8 +38,4 @@ export async function authenticate(
     }
     throw error;
   }
-}
-
-export async function signInWithGoogle () {
-  await signIn('google', { callbackUrl: '/dashboard' });
 }

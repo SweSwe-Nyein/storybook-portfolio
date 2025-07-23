@@ -74,7 +74,7 @@ const AboutMe = () => {
                 <div className="w-72 h-72 flex items-center justify-center">
                   <div className="text-center text-red-900 dark:text-red-100">
                     <img
-                      src="/swe.jpg"
+                      src="/swe.png"
                       alt="Swe's Profile"
                       className="w-48 h-52 object-cover mx-auto mb-4 border-4 border-red-300 shadow-lg"
                     />

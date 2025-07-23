@@ -178,34 +178,6 @@ export function DashboardOverview() {
           </Card>
         </motion.div>
       </div>
-
-      {/* Quick Actions */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.8 }}
-      >
-        <Card className="bg-gradient-to-r from-red-500 to-red-600 dark:from-red-600 dark:to-red-700 text-white border-none shadow-xl p-4 lg:p-6 artistic-frame">
-          <h3 className="text-lg lg:text-xl font-serif mb-4 handwritten">Quick Actions</h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-4">
-            <button className="bg-white/20 hover:bg-white/30 rounded-xl p-3 lg:p-4 text-left transition-colors">
-              <Calendar className="w-5 h-5 lg:w-6 lg:h-6 mb-2" />
-              <p className="font-medium handwritten text-sm lg:text-base">Schedule Post</p>
-              <p className="text-xs lg:text-sm opacity-90 story-text">Plan your content</p>
-            </button>
-            <button className="bg-white/20 hover:bg-white/30 rounded-xl p-3 lg:p-4 text-left transition-colors">
-              <MessageSquare className="w-5 h-5 lg:w-6 lg:h-6 mb-2" />
-              <p className="font-medium handwritten text-sm lg:text-base">View Messages</p>
-              <p className="text-xs lg:text-sm opacity-90 story-text">Check inquiries</p>
-            </button>
-            <button className="bg-white/20 hover:bg-white/30 rounded-xl p-3 lg:p-4 text-left transition-colors sm:col-span-2 lg:col-span-1">
-              <Globe className="w-5 h-5 lg:w-6 lg:h-6 mb-2" />
-              <p className="font-medium handwritten text-sm lg:text-base">Update Portfolio</p>
-              <p className="text-xs lg:text-sm opacity-90 story-text">Add new projects</p>
-            </button>
-          </div>
-        </Card>
-      </motion.div>
     </div>
   )
 }
