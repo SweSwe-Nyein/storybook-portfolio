@@ -60,6 +60,8 @@ const config: Config = {
         float: "float 6s ease-in-out infinite",
         wobble: "wobble 3s ease-in-out infinite",
         pulse: "pulse 2s ease-in-out infinite",
+        'spin-slow': 'spin 8s linear infinite',
+        'fadeOut': 'fadeOut 1s ease-in-out forwards',
       },
       keyframes: {
         float: {
@@ -75,6 +77,10 @@ const config: Config = {
         pulse: {
           "0%, 100%": { opacity: "0.3", transform: "scale(1)" },
           "50%": { opacity: "0.6", transform: "scale(1.05)" },
+        },
+        fadeOut: {
+          '0%': { opacity: '1' },
+          '100%': { opacity: '0' },
         },
       },
       borderRadius: {

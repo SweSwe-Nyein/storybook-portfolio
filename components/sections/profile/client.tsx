@@ -1,10 +1,12 @@
+'use client'
 import React from 'react'
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { ImmersiveHero } from "@/components/immersive-hero"
 import { scrollToSection } from '@/app/page'
+import { ProfileData } from '@/types/profile'
 
-const Beginning = () => {
+const ProfileClient = ({profile}: {profile: ProfileData}) => {
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative py-20">
       <div className="container mx-auto px-8 max-w-6xl">
@@ -33,7 +35,7 @@ const Beginning = () => {
         >
           <div className="artistic-frame p-8 bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm rounded-lg shadow-xl max-w-4xl mx-auto">
             <p className="text-xl text-red-800 dark:text-red-200 leading-relaxed font-light story-text mb-8">
-              I am a Frontend Engineer living in Thailand, specializing in modern JavaScript frameworks. With a strong foundation in frontend and backend development, I deliver high-quality solutions while staying updated on emerging technologies. Passionate about tech education, I teach computer science to children and create technical content, combining expertise with knowledge-sharing.
+              { profile.overview}
             </p>
             <div className="flex justify-center space-x-4">
               <Button
@@ -57,4 +59,4 @@ const Beginning = () => {
   )
 }
 
-export default Beginning
+export default ProfileClient

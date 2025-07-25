@@ -1,8 +1,9 @@
-
+'use client'
 import { motion } from "framer-motion"
 import { Card } from "@/components/ui/card"
+import { ProfileData } from "@/types/profile"
 
-const AboutMe = () => {
+const AboutMe = ({profile}: {profile: ProfileData}) => {
   return (
     <section id="about" className="py-32 relative">
       <div className="container mx-auto px-8 max-w-6xl">
@@ -34,25 +35,18 @@ const AboutMe = () => {
                 My Journey
               </h3>
               <div className="w-16 h-1 bg-red-500 dark:bg-red-400 mb-6 brush-stroke-line" />
-              <p className="text-red-700 dark:text-red-300 leading-relaxed mb-6 story-text">
-                From the golden temples of Yangon, Myanmar to the digital landscapes of modern web development, I've been
-                crafting user experiences that bridge cultures and connect hearts. My code tells stories, my designs
-                preserve heritage, and my passion drives innovation.
-              </p>
-              <p className="text-red-700 dark:text-red-300 leading-relaxed story-text">
-                Specializing in React, TypeScript, and Next.js, I create applications that are not just functional,
-                but meaningful. Every component I build carries the precision of
-                modern engineering.
+              <p className="whitespace-pre-line text-red-700 dark:text-red-300 leading-relaxed mb-6 story-text">
+                { profile.bio }
               </p>
             </Card>
 
             <div className="grid grid-cols-3 gap-4">
               <Card className="bg-gradient-to-br from-red-400 to-red-500 dark:from-red-600 dark:to-red-700 text-white p-6 text-center artistic-frame">
-                <div className="text-2xl font-bold handwritten">3+</div>
+                <div className="text-2xl font-bold handwritten">{profile.experienceYears}+</div>
                 <div className="text-sm story-text">Years Experience</div>
               </Card>
               <Card className="bg-gradient-to-br from-orange-400 to-red-400 dark:from-orange-600 dark:to-red-600 text-white p-6 text-center artistic-frame">
-                <div className="text-2xl font-bold handwritten">10+</div>
+                <div className="text-2xl font-bold handwritten">{profile.projectsCount}+</div>
                 <div className="text-sm story-text">Projects Built</div>
               </Card>
               <Card className="bg-gradient-to-br from-yellow-400 to-orange-400 dark:from-yellow-600 dark:to-orange-600 text-white p-6 text-center artistic-frame">
@@ -78,8 +72,8 @@ const AboutMe = () => {
                       alt="Swe's Profile"
                       className="w-48 h-52 object-cover mx-auto mb-4 border-4 border-red-300 shadow-lg"
                     />
-                    <div className="handwritten text-3xl">Swe</div>
-                    <div className="story-text text-xl mt-2 opacity-90">Frontend Developer</div>
+                    <div className="handwritten text-3xl">{profile.name}</div>
+                    <div className="story-text text-xl mt-2 opacity-90">{profile.role}</div>
                   </div>
                 </div>
               </div>

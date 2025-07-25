@@ -6,16 +6,12 @@ import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { useRouter, usePathname } from "next/navigation"
 import {
-  BarChart3,
-  Users,
   FileText,
   Settings,
   LogOut,
   Menu,
   X,
   Home,
-  Bell,
-  Search,
   Code,
   FolderOpen,
 } from "lucide-react"
@@ -30,7 +26,6 @@ interface DashboardLayoutProps {
 
 const sidebarItems = [
   // { id: "overview", label: "Overview", icon: BarChart3, href: "/dashboard" },
-  { id: "users", label: "Users", icon: Users, href: "/dashboard/users" },
   { id: "skills", label: "Skills", icon: Code, href: "/dashboard/skills" },
   { id: "projects", label: "Projects", icon: FolderOpen, href: "/dashboard/projects" },
   { id: "content", label: "Content", icon: FileText, href: "/dashboard/content" },

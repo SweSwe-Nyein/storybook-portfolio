@@ -1,79 +1,29 @@
 "use client"
 
 import type React from "react"
-import { useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { Code, Palette, Smartphone, Globe, Database, Zap } from "lucide-react"
+import { ElementType, useState } from "react"
+import { motion } from "framer-motion"
+import { SkillData } from "@/types/profile"
+import * as Icons from "lucide-react"
 
-interface Skill {
-  id: string
-  name: string
-  icon: React.ReactNode
-  level: number
-  color: string
-  description: string
-  technologies: string[]
+const SkillIcon = ({ name, icon, id, color, hoveredSkill }: { name: string, icon: string | null, id: number, color: string | null, hoveredSkill: number }) => {
+  const Icon = Icons[icon as keyof typeof Icons] as ElementType
+  return (
+    <motion.div
+      className={`w-16 h-16 bg-gradient-to-br ${color} rounded-2xl flex items-center justify-center text-white mb-6 mx-auto`}
+      animate={{
+        rotate: hoveredSkill === id ? 5 : 0,
+        scale: hoveredSkill === id ? 1.1 : 1,
+      }}
+      transition={{ duration: 0.3 }}
+    >
+      <Icon className="w-8 h-8" />
+    </motion.div>
+  )
 }
 
-const skills: Skill[] = [
-  {
-    id: "frontend",
-    name: "Frontend Development",
-    icon: <Code className="w-8 h-8" />,
-    level: 95,
-    color: "from-blue-500 to-cyan-500",
-    description: "Crafting beautiful, responsive user interfaces with modern frameworks",
-    technologies: ["React", "Next.js","TypeScript", "Redux", "Tanstack", "Zustand"],
-  },
-  {
-    id: "design",
-    name: "UI/UX Design",
-    icon: <Palette className="w-8 h-8" />,
-    level: 88,
-    color: "from-purple-500 to-pink-500",
-    description: "Creating intuitive designs that blend aesthetics with functionality",
-    technologies: ["Figma", "Framer", "Principle", "User Accessibility"],
-  },
-  {
-    id: "mobile",
-    name: "Mobile Development",
-    icon: <Smartphone className="w-8 h-8" />,
-    level: 82,
-    color: "from-green-500 to-emerald-500",
-    description: "Building cross-platform mobile applications with native performance",
-    technologies: ["React Native", "Expo", "Flutter", "PWA"],
-  },
-  {
-    id: "web",
-    name: "Web Technologies",
-    icon: <Globe className="w-8 h-8" />,
-    level: 92,
-    color: "from-orange-500 to-red-500",
-    description: "Mastering the full spectrum of modern web development",
-    technologies: ["HTML5", "CSS3", "JavaScript", "WebGL"],
-  },
-  {
-    id: "backend",
-    name: "Backend Integration",
-    icon: <Database className="w-8 h-8" />,
-    level: 78,
-    color: "from-indigo-500 to-purple-500",
-    description: "Connecting frontends with robust backend services and APIs",
-    technologies: ["Node.js", "GraphQL", "REST APIs", "Firebase"],
-  },
-  {
-    id: "performance",
-    name: "Performance Optimization",
-    icon: <Zap className="w-8 h-8" />,
-    level: 90,
-    color: "from-yellow-500 to-orange-500",
-    description: "Optimizing applications for speed, accessibility, and user experience",
-    technologies: ["Webpack", "Vite", "Lighthouse", "Core Web Vitals"],
-  },
-];
-
-export function InteractiveSkills() {
-  const [hoveredSkill, setHoveredSkill] = useState<string | null>(null)
+const InteractiveSkillsClient = ({ skills }: { skills: SkillData[] }) => {
+  const [hoveredSkill, setHoveredSkill] = useState<number | null>(null)
 
   return (
     <section id="skills" className="py-32 relative">
@@ -118,23 +68,14 @@ export function InteractiveSkills() {
                 >
                   {/* Animated Background Gradient */}
                   <motion.div
-                    className={`absolute inset-0 bg-gradient-to-br ${skill.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}
+                    className={`absolute inset-0 bg-gradient-to-br  ${skill.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}
                     animate={{
                       opacity: hoveredSkill === skill.id ? 0.1 : 0,
                     }}
                   />
 
                   {/* Icon */}
-                  <motion.div
-                    className={`w-16 h-16 bg-gradient-to-br ${skill.color} rounded-2xl flex items-center justify-center text-white mb-6 mx-auto`}
-                    animate={{
-                      rotate: hoveredSkill === skill.id ? 5 : 0,
-                      scale: hoveredSkill === skill.id ? 1.1 : 1,
-                    }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    {skill.icon}
-                  </motion.div>
+                  <SkillIcon  name={skill.name} icon={skill.icon} id={skill.id} color={skill.color} hoveredSkill={hoveredSkill || 0} />
 
                   {/* Skill Name */}
                   <h3 className="text-xl font-serif text-red-900 dark:text-red-100 mb-4 text-center handwritten">
@@ -150,7 +91,7 @@ export function InteractiveSkills() {
                       <motion.div
                         className={`h-full bg-gradient-to-r ${skill.color} rounded-full`}
                         initial={{ width: 0 }}
-                        whileInView={{ width: `${skill.level}%` }}
+                        whileInView={{ width: `${skill.proficiency}%` }}
                         transition={{ duration: 1.5, delay: index * 0.2 }}
                       />
                     </div>
@@ -160,20 +101,20 @@ export function InteractiveSkills() {
                       whileInView={{ opacity: 1 }}
                       transition={{ delay: index * 0.2 + 1 }}
                     >
-                      {skill.level}%
+                      {skill.proficiency}%
                     </motion.span>
                   </div>
                   <div className="flex flex-wrap gap-3 mb-8">
-                    {skill.technologies.map((tech, techIndex) => (
+                    {skill.skills.map((tech, techIndex) => (
                       <motion.span
-                        key={tech}
+                        key={tech.id}
                         className="px-2 py-1 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 rounded-full text-xs handwritten artistic-tag"
                         initial={{ opacity: 0, scale: 0.8 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         transition={{ delay: techIndex * 0.1 }}
                         whileHover={{ scale: 1.05 }}
                       >
-                        {tech}
+                        {tech.name}
                       </motion.span>
                     ))}
                   </div>
@@ -186,3 +127,5 @@ export function InteractiveSkills() {
     </section>
   )
 }
+
+export default InteractiveSkillsClient;

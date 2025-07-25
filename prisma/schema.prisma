@@ -91,6 +91,7 @@ model SkillCategory {
   name          String  // e.g., "Frontend Development", "UI/UX Design"
   description   String
   icon          String?
+  color         String?
   proficiency   Int     // Percentage like 95
   skills Skill  []
 }

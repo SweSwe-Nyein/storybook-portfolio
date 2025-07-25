@@ -2,7 +2,7 @@ import NextAuth from "next-auth";
 import { authConfig } from "./auth.config";
 import Credentials from "next-auth/providers/credentials";
 import { z } from 'zod';
-import type { User } from '@/types/user';
+import type { ProfileData } from '@/types/profile';
 import bcrypt from 'bcryptjs';
 import postgres from 'postgres';
 import Google from "next-auth/providers/google";
@@ -11,9 +11,9 @@ import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import prisma from "./lib/prisma";
 const sql = postgres(process.env.POSTGRES_URL!, { ssl: 'require' });
 
-async function getUser(email: string): Promise<User | undefined> {
+async function getUser(email: string): Promise<ProfileData | undefined> {
   try {
-    const user = await sql<User[]>`SELECT * FROM "User" WHERE email = ${email}`;
+    const user = await sql<ProfileData[]>`SELECT * FROM "User" WHERE email = ${email}`;
     return user[0];
   } catch (error) {
     console.error('Failed to fetch user:', error);
@@ -50,6 +50,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
             const { email, password } = parsedCredentials.data;
             const user = await getUser(email);
             if (!user) return null;
+            if (!user.password) return null;
             const passwordsMatch = await bcrypt.compare(password, user.password);
             // const passwordsMatch = password == user.password
             if (passwordsMatch) return user;

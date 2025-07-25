@@ -3,6 +3,7 @@ import type { Metadata } from "next"
 import { Playfair_Display, Quattrocento, Yeseva_One } from "next/font/google"
 import { ThemeProvider } from "@/components/theme-provider"
 import "./globals.css"
+import { ToastProvider } from "@/components/ui/toast-context"
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -43,7 +44,9 @@ export default function RootLayout({
     <html lang="en" className={`${quattrocento.variable} ${yeseva.variable} ${playfair.variable}`} suppressHydrationWarning>
       <body className="font-serif antialiased">
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange={false}>
-          {children}
+          <ToastProvider>
+            {children}
+          </ToastProvider>
         </ThemeProvider>
       </body>
     </html>
