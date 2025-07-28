@@ -7,6 +7,7 @@ import { LoadingScreen } from "@/components/loading-screen"
 import InteractiveSkills from "@/components/sections/skill"
 import Project from "@/components/sections/project"
 import Connection from "@/components/sections/connection"
+import WorkExperience from "@/components/sections/experience"
 
 export const scrollToSection = (sectionId: string) => {
   document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" })
@@ -24,6 +25,9 @@ export default async function ArtisticPortfolio() {
 
         {/* Chapter 3: The Skills */}
         <InteractiveSkills />
+        
+        {/* Chapter 4: The Adventures (Projects) */}
+        <WorkExperience />
 
         {/* Chapter 4: The Adventures (Projects) */}
         <Project />

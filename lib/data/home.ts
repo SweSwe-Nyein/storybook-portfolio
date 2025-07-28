@@ -12,7 +12,7 @@ export const getProfile = async () => {
   }
 }
 
-export async function getSkills() {
+export const getSkills = async () => {
   try {
     const data = await prisma.skillCategory.findMany({
       orderBy: {
@@ -29,12 +29,27 @@ export async function getSkills() {
   }
 }
 
-export async function getProjects() {
+export const getWorkExperience = async () => {
+  try {
+    const data = await prisma.workExperience.findMany({
+      orderBy: {
+        id: "asc",
+      },
+    });
+    return data;
+  } catch (error) {
+    console.error(error);
+    throw new Error("Failed to fetch work experience");
+  }
+}
+
+export const getProjects = async () => {
   try {
     const data = await prisma.project.findMany({
       orderBy: {
         id: "asc",
-      }
+      },
+      take: 4
     });
     return data;
   } catch (error) {

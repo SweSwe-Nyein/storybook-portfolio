@@ -14,9 +14,9 @@ import {
   Home,
   Code,
   FolderOpen,
+  Award,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { signOutAction } from "@/lib/actions/authActions"
 interface DashboardLayoutProps {
@@ -27,6 +27,7 @@ interface DashboardLayoutProps {
 const sidebarItems = [
   // { id: "overview", label: "Overview", icon: BarChart3, href: "/dashboard" },
   { id: "skills", label: "Skills", icon: Code, href: "/dashboard/skills" },
+  { id: "work-experience", label: "Work Experience", icon: Award, href: "/admin/work-experience" },
   { id: "projects", label: "Projects", icon: FolderOpen, href: "/dashboard/projects" },
   { id: "content", label: "Content", icon: FileText, href: "/dashboard/content" },
   { id: "settings", label: "Settings", icon: Settings, href: "/dashboard/settings" },

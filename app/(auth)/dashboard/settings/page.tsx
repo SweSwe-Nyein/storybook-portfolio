@@ -1,12 +1,18 @@
-"use client"
-
 import { DashboardLayout } from "@/components/admin/dashboard-layout"
-import { SettingsManagement } from "@/components/admin/settings-management"
+import SettingsManagement from "@/components/admin/settings/settings-management"
+import { getProfile } from "@/lib/data/home";
 
-export default function AdminSettingsPage() {
+const AdminSettingsPage = async () => {
+  const profile = await getProfile();
+
+  if (!profile) {
+    return <div>No profile data</div>;
+  }
   return (
     <DashboardLayout activeTab="settings">
-      <SettingsManagement />
+      <SettingsManagement profile={profile} />
     </DashboardLayout>
   )
 }
+
+export default AdminSettingsPage

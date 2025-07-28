@@ -20,7 +20,7 @@ const ProjectShowcaseClient = ({projects} : {projects: ProjectData[]}) => {
         >
           <div className="chapter-header mb-8">
             <div className="ornamental-border">
-              <span className="chapter-number handwritten">Chapter IV</span>
+              <span className="chapter-number handwritten">Chapter V</span>
             </div>
           </div>
           <h2 className="text-5xl font-serif text-red-900 dark:text-red-100 mb-6 handwritten-title">

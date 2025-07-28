@@ -32,7 +32,6 @@ export const metadata: Metadata = {
   title: "Artistic Portfolio | Frontend Developer & Storyteller",
   description:
     "An artistic portfolio showcasing frontend development work with traditional Burmese aesthetic and storytelling design.",
-    generator: 'v0.dev'
 }
 
 export default function RootLayout({

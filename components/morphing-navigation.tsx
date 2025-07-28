@@ -4,7 +4,7 @@ import type React from "react"
 
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Home, User, Briefcase, Code, Mail, Menu, X } from "lucide-react"
+import { Home, User, Briefcase, Code, Mail, Menu, X, Workflow } from "lucide-react"
 
 interface NavItem {
   id: string
@@ -17,7 +17,8 @@ const navItems: NavItem[] = [
   { id: "home", label: "Home", icon: <Home className="w-5 h-5" />, color: "from-red-500 to-red-600" },
   { id: "about", label: "About", icon: <User className="w-5 h-5" />, color: "from-orange-500 to-red-500" },
   { id: "skills", label: "Skills", icon: <Code className="w-5 h-5" />, color: "from-yellow-500 to-orange-500" },
-  { id: "projects", label: "Projects", icon: <Briefcase className="w-5 h-5" />, color: "from-green-500 to-teal-500" },
+  { id: "experience", label: "Experience", icon: <Briefcase className="w-5 h-5" />, color: "from-yellow-500 to-orange-500" },
+  { id: "projects", label: "Projects", icon: <Workflow className="w-5 h-5" />, color: "from-green-500 to-teal-500" },
   { id: "contact", label: "Contact", icon: <Mail className="w-5 h-5" />, color: "from-blue-500 to-purple-500" },
 ]
 
@@ -58,7 +59,7 @@ export function MorphingNavigation({ onNavigate }: { onNavigate: (section: strin
         className="relative"
         animate={{
           width: isExpanded ? 280 : 50,
-          height: isExpanded ? 550 : 50,
+          height: isExpanded ? 620 : 50,
         }}
         transition={{ duration: 0.5, ease: "easeInOut" }}
       >
@@ -126,6 +127,7 @@ export function MorphingNavigation({ onNavigate }: { onNavigate: (section: strin
                   onMouseEnter={() => setHoveredItem(item.id)}
                   onMouseLeave={() => setHoveredItem(null)}
                   onClick={() => {
+                    console.log("Navigating to", item.id)
                     onNavigate(item.id)
                     setIsExpanded(false)
                   }}
@@ -167,7 +169,7 @@ export function MorphingNavigation({ onNavigate }: { onNavigate: (section: strin
                   <motion.div
                     className="absolute inset-0 border-2 border-transparent rounded-2xl"
                     animate={{
-                      borderColor: hoveredItem === item.id ? "rgba(220, 38, 38, 0.3)" : "transparent",
+                      borderColor: hoveredItem === item.id ? "rgba(220, 38, 38, 0.3)" : "none",
                     }}
                     transition={{ duration: 0.2 }}
                   />

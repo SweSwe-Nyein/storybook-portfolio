@@ -476,32 +476,6 @@ export function SkillsCRUD() {
           </motion.div>
         )}
       </AnimatePresence>
-
-      {/* Stats */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <Card className="bg-white/70 dark:bg-gray-800/70 backdrop-blur-sm border-none shadow-xl p-4 artistic-frame text-center">
-          <p className="text-2xl font-bold text-red-900 dark:text-red-100 handwritten">{skillCategories.length}</p>
-          <p className="text-red-600 dark:text-red-400 story-text text-sm">Categories</p>
-        </Card>
-        <Card className="bg-white/70 dark:bg-gray-800/70 backdrop-blur-sm border-none shadow-xl p-4 artistic-frame text-center">
-          <p className="text-2xl font-bold text-blue-600 dark:text-blue-400 handwritten">
-            {skillCategories.reduce((acc, cat) => acc + cat.skills.length, 0)}
-          </p>
-          <p className="text-red-600 dark:text-red-400 story-text text-sm">Total Skills</p>
-        </Card>
-        <Card className="bg-white/70 dark:bg-gray-800/70 backdrop-blur-sm border-none shadow-xl p-4 artistic-frame text-center">
-          <p className="text-2xl font-bold text-green-600 dark:text-green-400 handwritten">
-            {Math.round(skillCategories.reduce((acc, cat) => acc + cat.proficiency, 0) / skillCategories.length) || 0}%
-          </p>
-          <p className="text-red-600 dark:text-red-400 story-text text-sm">Avg Proficiency</p>
-        </Card>
-        <Card className="bg-white/70 dark:bg-gray-800/70 backdrop-blur-sm border-none shadow-xl p-4 artistic-frame text-center">
-          <p className="text-2xl font-bold text-purple-600 dark:text-purple-400 handwritten">
-            {skillCategories.filter((cat) => cat.proficiency >= 90).length}
-          </p>
-          <p className="text-red-600 dark:text-red-400 story-text text-sm">Expert Level</p>
-        </Card>
-      </div>
     </div>
   )
 }

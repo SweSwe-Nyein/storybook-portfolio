@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { FloatingElements } from "@/components/floating-elements"
 import { MorphingNavigation } from "@/components/morphing-navigation"
+import { scrollToSection } from '@/app/page'
 // import { scrollToSection } from '@/app/page'
 
 const UIOverlayElements = () => {
@@ -33,7 +34,7 @@ const UIOverlayElements = () => {
       </div>
 
       {/* Morphing Navigation */}
-      <MorphingNavigation onNavigate={() => {}} />
+      <MorphingNavigation onNavigate={scrollToSection} />
 
       {/* Theme Toggle */}
       <div className="fixed top-8 right-8 z-40">

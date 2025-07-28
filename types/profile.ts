@@ -34,6 +34,19 @@ export type Skills = {
   skillCategoryId: number;
 }
 
+export type workExperienceData = {
+  id: string;
+  company: string;
+  position: string;
+  location: string;
+  startDate: string;
+  endDate: string | null;
+  description: string;
+  technologies: string[];
+  companyUrl: string | null;
+  type: string;
+}
+
 export type ProjectData = {
   id: number;
   tag: string | null;
