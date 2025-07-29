@@ -29,12 +29,30 @@ const quattrocento = Quattrocento({
 })
 
 export const metadata: Metadata = {
-  title: "Swe | Frontend Developer & Storyteller",
-  description: "An portfolio showcasing frontend development work with traditional Burmese aesthetic and storytelling design.",
-  icons: {
-    icon: '/favicon.png'
-  }
-}
+  title: "Swe Nyein | Frontend Developer",
+  description: "Portfolio of Swe Nyein, a frontend developer passionate about clean design and fullstack integrations.",
+  openGraph: {
+    title: "Swe Nyein | Frontend Developer",
+    description: "Explore my portfolio, projects, and work experience as a modern frontend developer.",
+    url: "https://www.swenyein.dev",
+    siteName: "Swe Nyein Portfolio",
+    images: [
+      {
+        url: "https://www.swenyein.dev/og.png", // You need to host this image
+        width: 1200,
+        height: 630,
+        alt: "Swe Nyein Portfolio Preview",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Swe Nyein | Frontend Developer",
+    description: "Explore my portfolio, projects, and work experience.",
+    images: ["https://www.swenyein.dev/og.png"],
+  },
+};
 
 export default function RootLayout({
   children,
