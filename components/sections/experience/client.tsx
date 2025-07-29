@@ -1,8 +1,8 @@
 "use client"
 
 import { useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { Calendar, MapPin, ExternalLink, Award, Users, Code2, Briefcase } from "lucide-react"
+import { motion } from "framer-motion"
+import { Calendar, MapPin, ExternalLink, Briefcase } from "lucide-react"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { workExperienceData } from "@/types/profile"
@@ -34,7 +34,7 @@ const WorkExperienceClient = ({ workExperiences }: { workExperiences: workExperi
   }
 
   return (
-    <div id="experience" className="py-32 relative">
+    <div id="experience" className="py-20 relative">
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -54,7 +54,7 @@ const WorkExperienceClient = ({ workExperiences }: { workExperiences: workExperi
         </p>
       </motion.div>
       {/* Timeline */}
-      <div className="relative container mx-auto px-8 max-w-6xl">
+      <div className="relative container mx-auto px-5 md:px-8 max-w-6xl">
         {/* Timeline Line */}
         <div className="absolute left-8 top-0 bottom-0 w-1 bg-gradient-to-b from-red-300 via-orange-300 to-red-300 dark:from-red-600 dark:via-orange-600 dark:to-red-600 rounded-full opacity-60" />
 
@@ -69,13 +69,13 @@ const WorkExperienceClient = ({ workExperiences }: { workExperiences: workExperi
                 initial={{ opacity: 0, x: 50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: index * 0.2 }}
-                className={`relative ml-20 md:ml-auto md:mr-20 md:pl-0"}`}
+                className={`relative md:ml-auto md:mr-20 md:pl-0"}`}
                 onMouseEnter={() => setHoveredExperience(experience.id)}
                 onMouseLeave={() => setHoveredExperience(null)}
               >
                 {/* Timeline Node */}
                 <motion.div
-                  className={`absolute -left-[15px] md:-right-16 md:left-auto"} top-8 w-8 h-8 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-white shadow-lg z-10`}
+                  className={`absolute -left-[0.1rem] md:-left-[15px] md:-right-16 md:left-auto"} top-8 w-8 h-8 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-white shadow-lg z-10`}
                   animate={{
                     scale: isHovered ? 1.2 : 1,
                     boxShadow: isHovered ? "0 0 20px rgba(220, 38, 38, 0.4)" : "0 4px 10px rgba(0, 0, 0, 0.2)",

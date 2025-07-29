@@ -72,7 +72,6 @@ CREATE TABLE "SkillCategory" (
     "id" SERIAL NOT NULL,
     "name" TEXT NOT NULL,
     "description" TEXT NOT NULL,
-    "proficiency" INTEGER NOT NULL,
 
     CONSTRAINT "SkillCategory_pkey" PRIMARY KEY ("id")
 );

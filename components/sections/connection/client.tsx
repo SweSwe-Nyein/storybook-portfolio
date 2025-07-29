@@ -23,8 +23,8 @@ const HandDrawnHeart = () => (
 
 const ConnectionClient = ({profile}: {profile: ProfileData}) => {
   return (
-    <section id="contact" className="py-32 relative">
-      <div className="container mx-auto px-8 max-w-4xl">
+    <section id="contact" className="py-20 relative">
+      <div className="container mx-auto px-5 md:px-8 max-w-4xl">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}

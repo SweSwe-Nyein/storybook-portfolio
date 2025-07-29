@@ -23,7 +23,6 @@ export type SkillData = {
   name: string;
   description: string;
   icon: string | null;
-  proficiency: number;
   color: string | null;
   skills: Skills[];
 }

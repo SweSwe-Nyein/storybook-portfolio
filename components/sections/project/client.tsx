@@ -10,8 +10,8 @@ const ProjectShowcaseClient = ({projects} : {projects: ProjectData[]}) => {
   const [hoveredProject, setHoveredProject] = useState<number | null>(null)
 
   return (
-    <section id="projects" className="py-32 relative">
-      <div className="container mx-auto px-8 max-w-6xl">
+    <section id="projects" className="py-20 relative">
+      <div className="container mx-auto px-5 md:px-8 max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -37,7 +37,7 @@ const ProjectShowcaseClient = ({projects} : {projects: ProjectData[]}) => {
             {projects.map((project, index) => (
               <motion.div
                 key={project.id}
-                className={`grid lg:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? "lg:grid-flow-col-dense" : ""}`}
+                className={`md:grid lg:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? "lg:grid-flow-col-dense" : ""}`}
                 initial={{ opacity: 0, y: 100 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: index * 0.2 }}
@@ -53,11 +53,11 @@ const ProjectShowcaseClient = ({projects} : {projects: ProjectData[]}) => {
                   >
                     <div className="mb-6">
                       <div className="flex items-center justify-between mb-4">
-                        <span className="px-3 py-1 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 rounded-full text-sm handwritten">
+                        <span className="px-2 md:px-3 py-1 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 rounded-full text-xs md:text-sm handwritten">
                           {project.tag}
                         </span>
                       </div>
-                      <h3 className="text-3xl font-serif text-red-900 dark:text-red-100 mb-2 handwritten-title">
+                      <h3 className="text-2xl md:text-3xl font-serif text-red-900 dark:text-red-100 mb-2 handwritten-title">
                         {project.title}
                       </h3>
                       <p className="text-lg text-red-600 dark:text-red-400 handwritten italic">{project.subtitle}</p>
@@ -72,7 +72,7 @@ const ProjectShowcaseClient = ({projects} : {projects: ProjectData[]}) => {
                       {project.techStack.map((tech, techIndex) => (
                         <motion.span
                           key={tech}
-                          className="px-4 py-2 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 rounded-full text-sm handwritten artistic-tag"
+                          className="px-4 py-2 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 rounded-full text-xs md:text-sm handwritten artistic-tag"
                           initial={{ opacity: 0, scale: 0.8 }}
                           whileInView={{ opacity: 1, scale: 1 }}
                           transition={{ delay: techIndex * 0.1 }}
@@ -89,23 +89,23 @@ const ProjectShowcaseClient = ({projects} : {projects: ProjectData[]}) => {
                         onClick={() => window.open(project.liveUrl ?? "", "_blank")} 
                         className="bg-red-600 hover:bg-red-700 dark:bg-red-700 dark:hover:bg-red-800 text-white px-6 py-3 rounded-full artistic-button"
                       >
-                        <ExternalLink className="w-4 h-4 mr-2" />
-                        <span className="handwritten">View Live</span>
+                        <ExternalLink className="w-4 h-4 md:mr-2" />
+                        <span className="hidden md:inline handwritten">View Live</span>
                       </Button>
                       <Button
                         onClick={() => window.open(project.codeUrl ?? "", "_blank")}
                         variant="outline"
                         className="border-red-600 dark:border-red-400 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/20 px-6 py-3 rounded-full artistic-button"
                       >
-                        <Github className="w-4 h-4 mr-2" />
-                        <span className="handwritten">View Code</span>
+                        <Github className="w-4 h-4 md:mr-2" />
+                        <span className="hidden md:inline handwritten">View Code</span>
                       </Button>
                     </div>
                   </motion.div>
                 </div>
 
                 {/* Project Visual */}
-                <div className={index % 2 === 1 ? "lg:col-start-1" : ""}>
+                <div className={index % 2 === 1 ? "lg:col-start-1 mt-6 md:mt-0" : "mt-6 md:mt-0"}>
                   <motion.div
                     className="project-illustration"
                     whileHover={{ scale: 1.02 }}

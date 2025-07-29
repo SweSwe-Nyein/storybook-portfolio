@@ -17,36 +17,6 @@ async function main() {
     },
   });
 
-  // Create Skill Categories and Skills
-  const frontendCategory = await prisma.skillCategory.create({
-    data: {
-      name: 'Frontend Development',
-      description: 'Building UI with modern frontend tools.',
-      proficiency: 90,
-      skills: {
-        create: [
-          { name: 'React' },
-          { name: 'Next.js' },
-          { name: 'TypeScript' },
-        ],
-      },
-    },
-  });
-
-  const designCategory = await prisma.skillCategory.create({
-    data: {
-      name: 'UI/UX Design',
-      description: 'Designing user-friendly and accessible interfaces.',
-      proficiency: 80,
-      skills: {
-        create: [
-          { name: 'Figma' },
-          { name: 'Adobe XD' },
-        ],
-      },
-    },
-  });
-
   // Create Projects
   await prisma.project.createMany({
     data: [

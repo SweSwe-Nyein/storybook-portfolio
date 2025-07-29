@@ -14,7 +14,6 @@ interface SkillCategory {
   id: number
   name: string
   description: string
-  proficiency: number
   skills: Skill[]
 }
 
@@ -29,7 +28,6 @@ const mockSkillCategories: SkillCategory[] = [
     id: 1,
     name: "Frontend Development",
     description: "Modern frontend technologies and frameworks",
-    proficiency: 95,
     skills: [
       { id: 1, name: "React", skillCategoryId: 1 },
       { id: 2, name: "Next.js", skillCategoryId: 1 },
@@ -41,7 +39,6 @@ const mockSkillCategories: SkillCategory[] = [
     id: 2,
     name: "UI/UX Design",
     description: "Design systems and user experience",
-    proficiency: 88,
     skills: [
       { id: 5, name: "Figma", skillCategoryId: 2 },
       { id: 6, name: "Adobe XD", skillCategoryId: 2 },
@@ -52,7 +49,6 @@ const mockSkillCategories: SkillCategory[] = [
     id: 3,
     name: "Mobile Development",
     description: "Cross-platform mobile applications",
-    proficiency: 82,
     skills: [
       { id: 8, name: "React Native", skillCategoryId: 3 },
       { id: 9, name: "Expo", skillCategoryId: 3 },
@@ -79,7 +75,6 @@ export function SkillsCRUD() {
   const [categoryFormData, setCategoryFormData] = useState({
     name: "",
     description: "",
-    proficiency: 0,
   })
 
   const [skillFormData, setSkillFormData] = useState({
@@ -96,7 +91,7 @@ export function SkillsCRUD() {
 
   const handleCreateCategory = () => {
     setEditingCategory(null)
-    setCategoryFormData({ name: "", description: "", proficiency: 0 })
+    setCategoryFormData({ name: "", description: "" })
     setIsModalOpen(true)
   }
 
@@ -105,7 +100,6 @@ export function SkillsCRUD() {
     setCategoryFormData({
       name: category.name,
       description: category.description,
-      proficiency: category.proficiency,
     })
     setIsModalOpen(true)
   }
@@ -251,12 +245,6 @@ export function SkillsCRUD() {
                       </div>
                     </div>
                     <div className="flex items-center space-x-4">
-                      <div className="text-right">
-                        <div className="text-2xl font-bold text-red-900 dark:text-red-100 handwritten">
-                          {category.proficiency}%
-                        </div>
-                        <div className="text-sm text-red-600 dark:text-red-400 story-text">Proficiency</div>
-                      </div>
                       <div className="flex space-x-2">
                         <Button
                           onClick={() => handleCreateSkill(category.id)}
@@ -284,18 +272,6 @@ export function SkillsCRUD() {
                           <Trash2 className="w-4 h-4" />
                         </Button>
                       </div>
-                    </div>
-                  </div>
-
-                  {/* Progress Bar */}
-                  <div className="mt-4">
-                    <div className="w-full h-2 bg-red-200 dark:bg-red-800 rounded-full overflow-hidden">
-                      <motion.div
-                        className="h-full bg-gradient-to-r from-red-500 to-red-600 rounded-full"
-                        initial={{ width: 0 }}
-                        animate={{ width: `${category.proficiency}%` }}
-                        transition={{ duration: 1, delay: index * 0.2 }}
-                      />
                     </div>
                   </div>
                 </div>
@@ -384,22 +360,6 @@ export function SkillsCRUD() {
                       className="artistic-input"
                       placeholder="Describe this skill category..."
                       rows={3}
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-red-700 dark:text-red-300 mb-2 handwritten">
-                      Proficiency ({categoryFormData.proficiency}%)
-                    </label>
-                    <input
-                      type="range"
-                      min="0"
-                      max="100"
-                      value={categoryFormData.proficiency}
-                      onChange={(e) =>
-                        setCategoryFormData({ ...categoryFormData, proficiency: Number.parseInt(e.target.value) })
-                      }
-                      className="w-full h-2 bg-red-200 rounded-lg appearance-none cursor-pointer slider"
                     />
                   </div>
 

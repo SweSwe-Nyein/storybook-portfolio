@@ -26,8 +26,8 @@ const InteractiveSkillsClient = ({ skills }: { skills: SkillData[] }) => {
   const [hoveredSkill, setHoveredSkill] = useState<number | null>(null)
 
   return (
-    <section id="skills" className="py-32 relative">
-      <div className="container mx-auto px-8 max-w-6xl">
+    <section id="skills" className="py-20 relative">
+      <div className="container mx-auto px-5 md:px-8 max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -84,26 +84,6 @@ const InteractiveSkillsClient = ({ skills }: { skills: SkillData[] }) => {
                   <p className="text-center text-red-700 dark:text-red-300 leading-relaxed story-text mb-6">
                     {skill.description}
                   </p>
-
-                  {/* Progress Bar */}
-                  <div className="mb-6 flex items-center gap-2">
-                    <div className="w-full h-3 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
-                      <motion.div
-                        className={`h-full bg-gradient-to-r ${skill.color} rounded-full`}
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${skill.proficiency}%` }}
-                        transition={{ duration: 1.5, delay: index * 0.2 }}
-                      />
-                    </div>
-                    <motion.span
-                      className="text-sm font-bold text-red-600 dark:text-red-400 handwritten"
-                      initial={{ opacity: 0 }}
-                      whileInView={{ opacity: 1 }}
-                      transition={{ delay: index * 0.2 + 1 }}
-                    >
-                      {skill.proficiency}%
-                    </motion.span>
-                  </div>
                   <div className="flex flex-wrap gap-3 mb-8">
                     {skill.skills.map((tech, techIndex) => (
                       <motion.span

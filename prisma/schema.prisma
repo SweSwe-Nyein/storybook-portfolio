@@ -92,7 +92,6 @@ model SkillCategory {
   description   String
   icon          String?
   color         String?
-  proficiency   Int     // Percentage like 95
   skills Skill  []
 }
 

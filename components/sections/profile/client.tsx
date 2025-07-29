@@ -9,7 +9,7 @@ import { ProfileData } from '@/types/profile'
 const ProfileClient = ({profile}: {profile: ProfileData}) => {
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative py-20">
-      <div className="container mx-auto px-8 max-w-6xl">
+      <div className="container mx-auto px-5 md:px-8 max-w-6xl">
         <div className="text-center mb-16">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -33,11 +33,11 @@ const ProfileClient = ({profile}: {profile: ProfileData}) => {
           transition={{ duration: 1, delay: 1.5 }}
           className="text-center mt-16"
         >
-          <div className="artistic-frame p-8 bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm rounded-lg shadow-xl max-w-4xl mx-auto">
+          <div className="artistic-frame p-4 md:p-8 bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm rounded-lg shadow-xl max-w-4xl mx-auto">
             <p className="text-xl text-red-800 dark:text-red-200 leading-relaxed font-light story-text mb-8">
-              { profile.overview}
+              {profile.overview}
             </p>
-            <div className="flex justify-center space-x-4">
+            <div className="flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-4">
               <Button
                 onClick={() => scrollToSection("about")}
                 className="bg-red-600 hover:bg-red-700 dark:bg-red-700 dark:hover:bg-red-800 text-white px-8 py-4 rounded-full shadow-lg artistic-button"
