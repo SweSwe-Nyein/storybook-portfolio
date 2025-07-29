@@ -77,7 +77,7 @@ export function MorphingNavigation({ onNavigate }: { onNavigate: (section: strin
 
         {/* Toggle Button */}
         <motion.button
-          className="absolute top-3 left-3 w-5 h-5 flex items-center justify-center text-red-600 dark:text-red-400 z-10"
+          className="absolute top-[15px] left-[15px] w-5 h-5 text-red-600 dark:text-red-400 z-10"
           onClick={() => setIsExpanded(!isExpanded)}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
