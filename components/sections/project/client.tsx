@@ -92,14 +92,17 @@ const ProjectShowcaseClient = ({projects} : {projects: ProjectData[]}) => {
                         <ExternalLink className="w-4 h-4 md:mr-2" />
                         <span className="hidden md:inline handwritten">View Live</span>
                       </Button>
-                      <Button
-                        onClick={() => window.open(project.codeUrl ?? "", "_blank")}
-                        variant="outline"
-                        className="border-red-600 dark:border-red-400 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/20 px-6 py-3 rounded-full artistic-button"
-                      >
-                        <Github className="w-4 h-4 md:mr-2" />
-                        <span className="hidden md:inline handwritten">View Code</span>
-                      </Button>
+                      {project.codeUrl && (
+                        <Button
+                          onClick={() => window.open(project.codeUrl ?? "", "_blank")}
+                          variant="outline"
+                          className="border-red-600 dark:border-red-400 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/20 px-6 py-3 rounded-full artistic-button"
+                        >
+                          <Github className="w-4 h-4 md:mr-2" />
+                          <span className="hidden md:inline handwritten">View Code</span>
+                        </Button>
+                      )}
+                      
                     </div>
                   </motion.div>
                 </div>
