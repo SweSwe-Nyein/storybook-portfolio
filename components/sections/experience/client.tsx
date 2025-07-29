@@ -135,8 +135,7 @@ const WorkExperienceClient = ({ workExperiences }: { workExperiences: workExperi
                           <div className="flex items-center space-x-1">
                             <Calendar className="w-4 h-4" />
                             <span>
-                              {formatDate(experience.startDate)} -{" "}
-                              {experience.endDate ? formatDate(experience.endDate) : "Present"}
+                              {experience.startDate } -  {experience.endDate}
                             </span>
                           </div>
                           <div className="flex items-center space-x-1">
@@ -145,9 +144,9 @@ const WorkExperienceClient = ({ workExperiences }: { workExperiences: workExperi
                           </div>
                         </div>
 
-                        <div className="mt-2 text-xs text-red-500 dark:text-red-500 handwritten">
+                        {/* <div className="mt-2 text-xs text-red-500 dark:text-red-500 handwritten">
                           {calculateDuration(experience.startDate, experience.endDate)}
-                        </div>
+                        </div> */}
                       </div>
 
                       {/* Current Job Indicator */}
