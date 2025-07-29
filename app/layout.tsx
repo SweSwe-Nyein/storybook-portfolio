@@ -44,7 +44,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${quattrocento.variable} ${yeseva.variable} ${playfair.variable}`} suppressHydrationWarning>
       <body className="font-serif antialiased">
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange={false}>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange={false}>
           <ToastProvider>
             {children}
           </ToastProvider>
