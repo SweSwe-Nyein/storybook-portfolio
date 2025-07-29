@@ -33,7 +33,7 @@ export const getWorkExperience = async () => {
   try {
     const data = await prisma.workExperience.findMany({
       orderBy: {
-        id: "asc",
+        id: "desc",
       },
     });
     return data;
@@ -47,7 +47,7 @@ export const getProjects = async () => {
   try {
     const data = await prisma.project.findMany({
       orderBy: {
-        id: "asc",
+        id: "desc",
       },
       take: 4
     });

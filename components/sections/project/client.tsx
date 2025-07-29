@@ -121,7 +121,7 @@ const ProjectShowcaseClient = ({projects} : {projects: ProjectData[]}) => {
                     >
                         <div className="bg-white/90 dark:bg-gray-800/90 rounded-lg h-64 flex items-center justify-center relative">
                           <img
-                            src={`/images/projects/${project.id}.png`}
+                            src={`/images/projects/${project.imageUrl}`}
                             alt={project.title}
                             className="w-full h-full mx-auto shadow-lg object-cover"
                             loading="lazy"
