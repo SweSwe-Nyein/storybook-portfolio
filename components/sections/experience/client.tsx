@@ -101,8 +101,8 @@ const WorkExperienceClient = ({ workExperiences }: { workExperiences: workExperi
                     {/* Header */}
                     <div className="flex items-start justify-between mb-4">
                       <div className="flex-1">
-                        <div className="flex items-center space-x-3 mb-2">
-                          <h3 className="text-xl font-serif text-red-900 dark:text-red-100 handwritten-title">
+                        <div className="md:flex items-center md:space-x-3 mb-2">
+                          <h3 className="mb-3 md:mb-0 text-xl font-serif text-red-900 dark:text-red-100 handwritten-title">
                             {experience.position}
                           </h3>
                           <span
@@ -131,7 +131,7 @@ const WorkExperienceClient = ({ workExperiences }: { workExperiences: workExperi
                           )}
                         </div>
 
-                        <div className="flex items-center space-x-4 text-sm text-red-600 dark:text-red-400 story-text">
+                        <div className="md:flex items-center md:space-x-4 text-sm text-red-600 dark:text-red-400 story-text">
                           <div className="flex items-center space-x-1">
                             <Calendar className="w-4 h-4" />
                             <span>
